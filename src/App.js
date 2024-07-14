@@ -1,12 +1,20 @@
 import React, { Fragment, useState } from "react";
+import { createBrowserRouter,RouterProvider } from "react-router-dom";
 import ProudctList from "./components/ProudctList";
 import Cart from "./components/Cart";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Header from "./components/Header";
+import HomePage from "./pages/Home";
+import StorePage from "./pages/Store";
+import AboutPage from "./pages/About";
 
-
+const router = createBrowserRouter([
+  { path: "/", element:<HomePage />},
+  { path: "/store", element: <StorePage /> }, {
+  path:"/about",element:<AboutPage />
+}]);
 
 const productsArr = [
   {
@@ -53,8 +61,8 @@ function App() {
   };
   const [products, setProducts] = useState(productsArr);
   return (
-    <Fragment>
-        {cartIsShown && <Cart onClose={closeCartHanlder} />}
+    <RouterProvider router={router}>
+      {cartIsShown && <Cart onClose={closeCartHanlder} />}
       <Header onShowCart={showCartHandler} />
       <Container>
         <Row>
@@ -70,7 +78,7 @@ function App() {
           ))}
         </Row>
       </Container>
-    </Fragment>
+    </RouterProvider>
   );
 }
 
