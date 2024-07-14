@@ -1,0 +1,11 @@
+.navbar .nav-links {
+    display: flex;
+    justify-content: center;
+
+    flex: 1;
+  }
+  
+  .navbar .ms-auto {
+    flex: none;
+  }
+  
