@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import Header from "./components/Header";
 
 
+
 const productsArr = [
   {
     title: "Colors",
@@ -60,6 +61,7 @@ function App() {
           {products.map((product) => (
             <Col md={6} sm={12} key={product.title}>
               <ProudctList
+                id={product.title}
                 title={product.title}
                 price={product.price}
                 image={product.imageUrl}

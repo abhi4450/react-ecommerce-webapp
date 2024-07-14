@@ -1,17 +1,40 @@
-import React from "react";
-
+import React, { useContext } from "react";
 import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import "./ProductList.css";
+import CartContext from "../store/cart-context";
 
-const ProudctList = (props) => {
+const ProductList = (props) => {
+  const ctx = useContext(CartContext);
+
+  const item = {
+    id: props.id,
+    name: props.title,
+    price: props.price,
+  };
+  const addToCartHandler = (amount) => {
+    ctx.addItem({
+      ...item,
+      amount: 1,
+    });
+  };
+
   return (
-    <Card style={{ width: "18rem", margin:"10px auto" }}>
-      <Card.Img variant="top" src={props.image} />
-      <Card.Body>
-        <Card.Title>{props.title}</Card.Title>
-        <Card.Text>{`$${props.price}`}</Card.Text>
+    <Card className="product-card">
+      <p className="text-center title display-6">{props.title}</p>
+      <Card.Img variant="top" src={props.image} className="product-image" />
+      <Card.Body className="d-flex justify-content-between align-items-center product-body">
+        <Card.Text className="fs-3 price-text">{`$${props.price}`}</Card.Text>
+        <Button
+          variant="primary"
+          className="add-to-cart-btn"
+          onClick={addToCartHandler}
+        >
+          Add To Cart
+        </Button>
       </Card.Body>
     </Card>
   );
 };
 
-export default ProudctList;
+export default ProductList;
