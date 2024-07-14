@@ -4,6 +4,11 @@
 
     flex: 1;
   }
+  .max{
+    display: flex;
+    width: 20rem;
+    justify-content: space-between;
+  }
   
   .navbar .ms-auto {
     flex: none;

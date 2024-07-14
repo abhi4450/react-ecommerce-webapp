@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import ProudctList from "./components/ProudctList";
-
+import Cart from "./components/Cart";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -42,10 +42,19 @@ const productsArr = [
 ];
 
 function App() {
+  const [cartIsShown, setCartIsShown] = useState(false);
+
+  const showCartHandler = () => {
+    setCartIsShown(true);
+  };
+  const closeCartHanlder = () => {
+    setCartIsShown(false);
+  };
   const [products, setProducts] = useState(productsArr);
   return (
     <Fragment>
-      <Header />
+        {cartIsShown && <Cart onClose={closeCartHanlder} />}
+      <Header onShowCart={showCartHandler} />
       <Container>
         <Row>
           {products.map((product) => (
