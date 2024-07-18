@@ -21,13 +21,13 @@ function App() {
   return (
     <Fragment>
       <Router>
+        {cartIsShown && <Cart onClose={closeCartHandler} />}
         <Navigation onShowCart={showCartHandler} />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/store" element={<StorePage />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>
-        {cartIsShown && <Cart onClose={closeCartHandler} />}
       </Router>
     </Fragment>
   );

@@ -16,4 +16,5 @@
 .nav-link.active {
   font-weight: bold;
   color: #fff;
+  border-bottom: 4px solid white;
 }
