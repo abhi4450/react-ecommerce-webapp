@@ -1,54 +1,11 @@
 import React, { Fragment, useState } from "react";
-import { createBrowserRouter,RouterProvider } from "react-router-dom";
-import ProudctList from "./components/ProudctList";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Cart from "./components/Cart";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Header from "./components/Header";
+import Navigation from "./components/Navbar";
 import HomePage from "./pages/Home";
 import StorePage from "./pages/Store";
 import AboutPage from "./pages/About";
-
-const router = createBrowserRouter([
-  { path: "/", element:<HomePage />},
-  { path: "/store", element: <StorePage /> }, {
-  path:"/about",element:<AboutPage />
-}]);
-
-const productsArr = [
-  {
-    title: "Colors",
-
-    price: 100,
-
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-  },
-
-  {
-    title: "Black and white Colors",
-
-    price: 50,
-
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-  },
-
-  {
-    title: "Yellow and Black Colors",
-
-    price: 70,
-
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-  },
-
-  {
-    title: "Blue Color",
-
-    price: 100,
-
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
-  },
-];
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
@@ -56,29 +13,23 @@ function App() {
   const showCartHandler = () => {
     setCartIsShown(true);
   };
-  const closeCartHanlder = () => {
+
+  const closeCartHandler = () => {
     setCartIsShown(false);
   };
-  const [products, setProducts] = useState(productsArr);
+
   return (
-    <RouterProvider router={router}>
-      {cartIsShown && <Cart onClose={closeCartHanlder} />}
-      <Header onShowCart={showCartHandler} />
-      <Container>
-        <Row>
-          {products.map((product) => (
-            <Col md={6} sm={12} key={product.title}>
-              <ProudctList
-                id={product.title}
-                title={product.title}
-                price={product.price}
-                image={product.imageUrl}
-              />
-            </Col>
-          ))}
-        </Row>
-      </Container>
-    </RouterProvider>
+    <Fragment>
+      <Router>
+        <Navigation onShowCart={showCartHandler} />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/store" element={<StorePage />} />
+          <Route path="/about" element={<AboutPage />} />
+        </Routes>
+        {cartIsShown && <Cart onClose={closeCartHandler} />}
+      </Router>
+    </Fragment>
   );
 }
 

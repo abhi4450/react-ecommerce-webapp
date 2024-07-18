@@ -1,0 +1,19 @@
+.navbar .nav-links {
+  display: flex;
+  justify-content: center;
+
+  flex: 1;
+}
+.max {
+  display: flex;
+  width: 20rem;
+  justify-content: space-between;
+}
+
+.navbar .ms-auto {
+  flex: none;
+}
+.nav-link.active {
+  font-weight: bold;
+  color: #fff;
+}

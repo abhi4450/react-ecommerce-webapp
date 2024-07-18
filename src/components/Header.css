@@ -1,16 +1,8 @@
-.navbar .nav-links {
-    display: flex;
-    justify-content: center;
-
-    flex: 1;
-  }
-  .max{
-    display: flex;
-    width: 20rem;
-    justify-content: space-between;
-  }
-  
-  .navbar .ms-auto {
-    flex: none;
-  }
-  
+.header {
+  padding: 2rem;
+ 
+}
+.header h1 {
+ font-size: 6rem;
+font-family: 'Courier New', Courier, monospace;
+}

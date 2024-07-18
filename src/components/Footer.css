@@ -1,0 +1,11 @@
+.footer {
+  position:static;
+  
+  bottom: 0;
+  width: 100%;
+  padding: 1.5rem 0;
+}
+
+.footer h2 {
+  margin-left: 15rem;
+}
